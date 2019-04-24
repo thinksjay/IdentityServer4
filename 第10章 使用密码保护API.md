@@ -9,14 +9,14 @@
 ## 10.1 添加用户
 就像基于内存存储的资源（即 范围 Scopes）和客户端一样，对于用户也可以这样做。      
 
-> 注意
+> **注意**
 有关如何正确存储和管理用户帐户的详细信息，请查看基于`ASP.NET Identity`的快速入门。   
 
 `TestUser`类代表测试用户及其声明。让我们通过在`config`类中添加以下代码来创建几个用户：   
 
-首先将以下 `using`语句添加到`Config.cs`文件中：   
+首先将以下 `using`语句添加到*Config.cs*文件中：   
 
-``` dotnet
+``` C#
 using IdentityServer4.Test;
 
 public static List<TestUser> GetUsers()
@@ -41,7 +41,7 @@ public static List<TestUser> GetUsers()
 
 然后使用IdentityServer注册测试用户：   
 
-``` dotnet
+``` C#
 public void ConfigureServices(IServiceCollection services)
 {
     // configure identity server with in-memory stores, keys, clients and scopes
@@ -63,7 +63,7 @@ public void ConfigureServices(IServiceCollection services)
 
 我们正在为资源所有者用例创建一个单独的客户端，将以下内容添加到客户端配置中：   
 
-``` dotnet
+``` C#
 public static IEnumerable<Client> GetClients()
 {
     return new List<Client>
@@ -93,7 +93,7 @@ public static IEnumerable<Client> GetClients()
 
 `IdentityModel`再次可以在这里提供帮助：   
 
-``` dotnet
+``` C#
 // request token
 var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
 {

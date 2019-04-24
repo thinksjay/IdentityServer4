@@ -1,4 +1,4 @@
-# 使用EntityFramework Core进行配置和操作数据
+# 第15章 使用EntityFramework Core进行配置和操作数据
 IdentityServer旨在实现可扩展性，其中一个可扩展点是用于IdentityServer所需数据的存储机制。本快速入门展示了如何配置IdentityServer以使用EntityFramework Core（EF）作为此数据的存储机制（而不是使用我们迄今为止使用的内存中实现）。   
 
 > **注意**
@@ -14,7 +14,7 @@ IdentityServer旨在实现可扩展性，其中一个可扩展点是用于Identi
 
 注册我们的EF实现的扩展方法包含在IdentityServer4.EntityFramework Nuget包中（引用`IdentityServer4.EntityFramework.Storage`）。立即从IdentityServer项目添加对`IdentityServer4.EntityFramework` Nuget包的引用：   
 
-``` dotnet
+``` shell
 cd quickstart/src/IdentityServer
 dotnet add package IdentityServer4.EntityFramework
 ```   
@@ -29,7 +29,7 @@ dotnet add package IdentityServer4.EntityFramework
 为`IdentityServer4.EntityFramework.Storage`中的实体维护SqlServer的最新SQL脚本。他们就在[这里](https://github.com/IdentityServer/IdentityServer4.EntityFramework.Storage/tree/master/migrations/SqlServer/Migrations)。
 
 ## 15.4 配置存储
-接下来的步骤是，以取代当前`AddInMemoryClients`，`AddInMemoryIdentityResources`和`AddInMemoryApiResources`在在`Startup.cs`方法`ConfigureServices`。我们将使用以下代码替换它们：   
+接下来的步骤是，以取代当前`AddInMemoryClients`，`AddInMemoryIdentityResources`和`AddInMemoryApiResources`在在*Startup.cs*方法`ConfigureServices`。我们将使用以下代码替换它们：   
 
 ``` C#
 const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer4.Quickstart.EntityFramework-2.0.0;trusted_connection=yes;";
@@ -77,7 +77,7 @@ using System.Reflection;
 ## 15.5 添加迁移
 要创建迁移，请在IdentityServer项目目录中打开命令提示符。在命令提示符下运行以下两个命令：   
 
-``` dotnet
+``` shell
 dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
 dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
 ```   
@@ -90,7 +90,7 @@ dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c Config
 > **注意**
 本快速入门中使用的方法用于简化IdentityServer的启动和运行。您应该设计适合您的体系结构的数据库创建和维护策略。   
 
-在`Startup.cs`中添加此方法以帮助初始化数据库：   
+在*Startup.cs*中添加此方法以帮助初始化数据库：   
 
 ``` C#
 private void InitializeDatabase(IApplicationBuilder app)

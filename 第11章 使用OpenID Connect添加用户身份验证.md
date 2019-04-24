@@ -12,11 +12,11 @@ IdentityServer 内置了 OpenID Connect 需要的所有协议支持。你需要�
 这套 UI 可以在 快速入门仓库 找到。你还可以克隆或下载这个仓库，将其中的控制器、视图、模型以及 CSS 放到你的 Web 应用程序中。
 
 或者，您可以使用.NET CLI（从src/IdentityServer文件夹中运行）：
-``` dotnet
+``` shell
 dotnet new is4ui
 ```   
 
-添加MVC UI后，您还需要在DI系统和管道中启用MVC。当您查看时，`Startup.cs`您将在`ConfigureServices`和`Configure`方法中找到注释，告诉您如何启用MVC。
+添加MVC UI后，您还需要在DI系统和管道中启用MVC。当您查看时，*Startup.cs`\*您将在`ConfigureServices`和`Configure`方法中找到注释，告诉您如何启用MVC。
 
 运行IdentityServer应用程序，您现在应该看到一个主页。
 
@@ -27,7 +27,7 @@ dotnet new is4ui
 
 要为OpenID Connect的认证支持添加到MVC应用程序，添加以下内容到`Startup`中`ConfigureServices`：   
 
-``` dotnet
+``` C#
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
@@ -59,12 +59,12 @@ public void ConfigureServices(IServiceCollection services)
 
 同样，我们已经关闭了JWT声明类型映射，以允许众所周知的声明（例如'sub'和'idp'）流畅地通过：   
 
-``` dotnet
+``` C#
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 ```   
 
 然后要确保认证服务执行对每个请求，加入`UseAuthentication`到`Startup`中`Configure`：   
-``` dotnet
+``` C#
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     if (env.IsDevelopment())
@@ -87,7 +87,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 最后一步是触发身份验证握手。为此，请转到主控制器并添加`[Authorize]`其中一个操作。还要修改主视图以显示用户的声明以及cookie属性：   
 
-``` dotnet 
+``` C# 
 @using Microsoft.AspNetCore.Authentication
 
 <h2>Claims</h2>
@@ -116,9 +116,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ## 11.3 添加对OpenID Connect标识范围的支持
 与OAuth 2.0类似，OpenID Connect也使用范围(Scope)概念。同样，范围代表您想要保护的内容以及客户想要访问的内容。与OAuth相比，OIDC中的范围不代表API，而是代表用户ID，名称或电子邮件地址等身份数据。   
 
-通过修改方法，添加对标准`openid`（subject id）和`profile`（名字，姓氏等）范围(Scope)的支持：`Config.cs`中`GetIdentityResources`   
+通过修改方法，添加对标准`openid`（subject id）和`profile`（名字，姓氏等）范围(Scope)的支持：*Config.cs*中`GetIdentityResources`   
 
-``` dotnet
+``` C#
 public static IEnumerable<IdentityResource> GetIdentityResources()
 {
     return new List<IdentityResource>
@@ -139,7 +139,7 @@ public static IEnumerable<IdentityResource> GetIdentityResources()
 
 将以下内容添加到客户端配置中：   
 
-``` dotnet
+``` C#
 public static IEnumerable<Client> GetClients()
 {
     return new List<Client>
@@ -180,7 +180,7 @@ public static IEnumerable<Client> GetClients()
 
 登录成功后，用户将在授权确认页中被呈现出来。在这里用户可以决定他是否想要发布他的身份信息给客户端应用程序。      
 
-> 注意
+> **注意**
 授权确认页可以通过客户端定义对象的`RequireConsent`属性被关闭（以每个客户端为单位）。   
 
 <div algin="center">
@@ -202,7 +202,7 @@ public static IEnumerable<Client> GetClients()
 
 确切的协议步骤在OpenID Connect处理程序中实现，只需将以下代码添加到某个控制器即可触发注销：   
 
-``` dotnet
+``` C#
 public IActionResult Logout()
 {
     return SignOut("Cookies", "oidc");
@@ -216,7 +216,7 @@ public IActionResult Logout()
 
 让我们将这些声明添加到用户，以便IdentityServer可以将它们放入身份标记：    
 
-``` dotnet
+``` C#
 public static List<TestUser> GetUsers()
 {
     return new List<TestUser>

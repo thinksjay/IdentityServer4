@@ -5,7 +5,7 @@
 ## 9.1设置ASP.NET核心应用程序
 首先为应用程序创建一个目录 - 然后使用我们的模板创建一个包含基本IdentityServer设置的ASP\.NET Core应用程序，例如：   
 
-``` dotnet
+``` shell
 md quickstart
 cd quickstart
 
@@ -17,31 +17,31 @@ dotnet new is4empty -n IdentityServer
 
 这将创建以下文件：   
 
-* `IdentityServer.csproj`- 项目文件和`Properties\launchSettings.json`文件
-* `Program.cs`和`Startup.cs`- 主要的应用程序入口点
-* `Config.cs` - IdentityServer资源和客户端配置文件   
+* *IdentityServer.csproj*- 项目文件和*Properties\launchSettings.json*文件
+* *Program.cs*和*Startup.cs*- 主要的应用程序入口点
+* *Config.cs* - IdentityServer资源和客户端配置文件   
 
 您现在可以使用自己喜欢的文本编辑器来编辑或查看文件。如果您希望获得Visual Studio支持，可以添加如下解决方案文件：   
 
-``` dotnet
+``` shell
 cd ..
 dotnet new sln -n Quickstart
 ```   
 
 然后让它添加你的IdentityServer项目（记住这个命令，因为我们将在下面创建其他项目）：   
 
-``` dotnet
+``` shell
 dotnet sln add .\src\IdentityServer\IdentityServer.csproj
 ```
 
-> **注意**
+> **注意**   
  此模板中使用的协议是`http`，当在`Kestrel`上运行时，端口设置为`5000`或`IISExpress`上的随机端口。您可以在`Properties\launchSettings.json`文件中更改它。但是，所有快速入门指令都假定您使用`Kestrel`上的默认端口以及`http`协议，该协议足以进行本地开发。   
 
 ## 9.2 定义API资源
 API是您要保护的系统中的资源。   
 
 资源定义可以通过多种方式加载，模板使用“代码作为配置”appproach。在[Config.cs](https://github.com/IdentityServer/IdentityServer4.Samples/blob/master/Quickstarts/1_ClientCredentials/src/IdentityServer/Config.cs)文件中，您可以找到一个名为GetApisAPI 的方法，如下所示：
-``` dotnet
+``` C#
 public static IEnumerable<ApiResource> GetApis()
 {
     return new List<ApiResource>
@@ -55,7 +55,7 @@ public static IEnumerable<ApiResource> GetApis()
 
 对于此方案，客户端将不具有交互式用户，并将使用IdentityServer的所谓客户端密钥进行身份验证。将以下代码添加到[Config.cs](https://github.com/IdentityServer/IdentityServer4.Samples/blob/master/Quickstarts/1_ClientCredentials/src/IdentityServer/Config.cs)文件中：   
 
-``` dotnet
+``` C#
 public static IEnumerable<Client> GetClients()
 {
     return new List<Client>
@@ -83,7 +83,7 @@ public static IEnumerable<Client> GetClients()
 ## 9.4 配置IdentityServer 
 在`Startup.cs`加载资源和客户端定义 - 模板已经为您执行此操作：   
 
-``` dotnet
+``` C#
 public void ConfigureServices(IServiceCollection services)
 {
     var builder = services.AddIdentityServer()
@@ -107,27 +107,27 @@ public void ConfigureServices(IServiceCollection services)
 
 您可以使用Visual Studio中的ASP.NET Core Web API（或空）模板，也可以使用.NET CLI来创建API项目。从`src`文件夹中运行以下命令：   
 
-``` dotnet
+``` shell
 dotnet new web -n Api
 ```   
 
 然后通过运行以下命令将其添加到解决方案中：   
 
-``` dotnet
+``` shell
 cd ..
 dotnet sln add .\src\Api\Api.csproj
 ```   
 
 将API应用程序配置为`http://localhost:5001`仅运行。您可以通过编辑Properties文件夹中的`launchSettings.json`文件来完成此操作。将应用程序URL设置更改为：   
 
-```
+``` json
 "applicationUrl": "http://localhost:5001"
 ```   
 
 ## 9.6 控制器
 在API项目中添加一个新文件夹Controllers和一个新控制器`IdentityController`：   
 
-``` dotnet
+``` C#
 [Route("identity")]
 [Authorize]
 public class IdentityController : ControllerBase
@@ -150,7 +150,7 @@ public class IdentityController : ControllerBase
 
 将`Startup`更新为如下所示：
 
-``` dotnet
+``` C#
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
@@ -185,20 +185,20 @@ public class Startup
 ## 9.8 创建客户端
 最后一步是编写请求访问令牌的客户端，然后使用此令牌访问API。为此，在您的解决方案中添加一个控制台项目，请记住在以下位置创建它src：   
 
-``` dotnet
+``` shell
 dotnet new console -n Client
 ```   
 
 然后和以前一样，使用以下方法将其添加到您的解   
 
-``` dotnet
+``` shell
 cd ..
 dotnet sln add .\src\Client\Client.csproj
 ```   
 
-打开`Program.cs`并将内容从这里复制到它。   
+打开*Program.cs*并将内容从这里复制到它。   
 
-客户端程序异步调用`Main`方法以运行异步`http`调用。 从`C#7.1`开始，此功能可用，一旦您编辑`Client.csproj`以将以下行添加为`PropertyGroup`，它就可用：   
+客户端程序异步调用`Main`方法以运行异步`http`调用。 从`C#7.1`开始，此功能可用，一旦您编辑*Client.csproj*以将以下行添加为`PropertyGroup`，它就可用：   
 
 ``` xml
 <LangVersion>latest</LangVersion>
@@ -206,15 +206,15 @@ dotnet sln add .\src\Client\Client.csproj
 
 IdentityServer的令牌端点实现**OAuth 2.0**协议，您可以使用原始HTTP来访问它。但是，我们有一个名为`IdentityModel`的客户端库，它将协议交互封装在易于使用的API中。   
 
-将`IdentityModel` NuGet包添加到您的客户端。这可以通过Visual Studio的nuget对话框，手动添加到`Client.csproj`文件，或使用CLI来完成：   
+将`IdentityModel` NuGet包添加到您的客户端。这可以通过Visual Studio的nuget对话框，手动添加到*Client.csproj*文件，或使用CLI来完成：   
 
-``` dotnet
+``` shell
 dotnet add package IdentityModel
 ```   
 
 IdentityModel包括用于发现端点的客户端库。这样您只需要知道IdentityServer的基地址 - 可以从元数据中读取实际的端点地址：   
 
-``` dotnet
+``` C#
 // discover endpoints from metadata
 var client = new HttpClient();
 var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
@@ -227,7 +227,7 @@ if (disco.IsError)
 
 接下来，您可以使用**发现文档**中的信息向IdentityServer请求令牌以访问api1：   
 
-``` dotnet
+``` C#
 // request token
 var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
 {
@@ -253,7 +253,7 @@ Console.WriteLine(tokenResponse.Json);
 ## 9.9 调用
 要将访问令牌发送到API，通常使用HTTP `Authorization`标头。这是使用`SetBearerToken`扩展方法完成的：   
 
-``` dotnet
+``` C#
 // call api
 var client = new HttpClient();
 client.SetBearerToken(tokenResponse.AccessToken);

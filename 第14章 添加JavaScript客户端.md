@@ -7,7 +7,7 @@
 为JavaScript应用程序创建一个新项目。它可以只是一个空的Web项目，一个空的ASP.NET Core应用程序，或者像Node.js应用程序。本快速入门将使用ASP.NET Core应用程序。   
 
 在~/src目录中创建一个新的“空”ASP.NET Core Web应用程序。您可以使用Visual Studio或从命令行执行此操作：   
-``` C#
+``` shell
 md JavaScriptClient
 cd JavaScriptClient
 dotnet new web
@@ -37,7 +37,7 @@ public void Configure(IApplicationBuilder app)
 ### 14.4.1 NPM
 如果要使用NPM下载oidc-client，请从JavaScriptClient项目目录运行以下命令：  
 
-``` C#
+``` shell
 npm i oidc-client
 copy node_modules\oidc-client\dist\* wwwroot
 ```   
@@ -48,7 +48,7 @@ copy node_modules\oidc-client\dist\* wwwroot
 如果您只想手动下载oidc-client JavaScript文件，请浏览到[GitHub](https://github.com/IdentityModel/oidc-client-js/tree/master/dist)存储库 并下载JavaScript文件。下载后，将它们复制到~/wwwroot中，以便它们可以提供给您的应用程序。   
 
 ## 14.5 添加HTML和JavaScript文件
-接下来是将您的HTML和JavaScript文件添加到~/ wwwroot。我们将有两个HTML文件和一个特定于应用程序的JavaScript文件（除了oidc-client.js库）。在~/wwwroot中，添加一个名为`index.html`和`callback.html`的HTML文件，并添加一个名为`app.js`的JavaScript文件。   
+接下来是将您的HTML和JavaScript文件添加到~/ wwwroot。我们将有两个HTML文件和一个特定于应用程序的JavaScript文件（除了*oidc-client.js*库）。在~/wwwroot中，添加一个名为*index.html*和*callback.html*的HTML文件，并添加一个名为*app.js*的JavaScript文件。   
 
 ### 14.5.1 index.html
 这将是我们应用程序中的主页面。它将只包含用于登录，注销和调用Web API的按钮的HTML。它还将包含`<script>`标记以包含我们的两个JavaScript文件。它还将包含`<pre>`用于向用户显示消息的用途。   
@@ -183,7 +183,7 @@ function logout() {
 ```   
 
 ## 14.6 客户注册加入IdentityServer的JavaScript客户端
-既然客户端应用程序已经准备就绪，我们需要在IdentityServer中为这个新的JavaScript客户端定义一个配置条目。在IdentityServer项目中找到客户端配置（在`Config.cs`中）。将新客户端添加到我们的新JavaScript应用程序的列表中。它应该具有下面列出的配置：
+既然客户端应用程序已经准备就绪，我们需要在IdentityServer中为这个新的JavaScript客户端定义一个配置条目。在IdentityServer项目中找到客户端配置（在*Config.cs*中）。将新客户端添加到我们的新JavaScript应用程序的列表中。它应该具有下面列出的配置：
 
 ``` C#
 // JavaScript Client
@@ -213,7 +213,7 @@ new Client
 
 ### 14.7.1 配置CORS
 
-`ConfigureServices`在`Startup.cs`中将CORS服务添加到依赖注入系统：   
+`ConfigureServices`在*Startup.cs*中将CORS服务添加到依赖注入系统：   
 
 ``` C#
 public void ConfigureServices(IServiceCollection services)

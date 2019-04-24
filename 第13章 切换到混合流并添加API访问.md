@@ -1,4 +1,4 @@
-第13章 切换到混合流并添加API访问
+# 第13章 切换到混合流并添加API访问
 
 在之前的快速入门中，我们探讨了API访问和用户身份验证。现在我们想把这两个部分放在一起。   
 
@@ -15,7 +15,7 @@ OpenID Connect和OAuth 2.0组合的优点在于，您可以使用单个协议和
 
 最后，我们还让客户端访问`offline_access`范围 - 这允许请求刷新令牌以实现长期存在的API访问：   
 
-``` dotnet
+``` C#
 new Client
 {
     ClientId = "mvc",
@@ -45,7 +45,7 @@ MVC客户端的修改也很少 - ASP\.NET Core OpenID Connect处理程序内置�
 
 我们配置 `ClientSecret` 以让它跟 IdentityServer 上的信息相匹配。添加 `offline_access` scopes，然后设置`ResponseType`为`code id_token`（基本的意思就是“使用混合流”）。要在我们的MVC客户端标识中保留网站声明，我们需要使用声明显式映射声明。   
 
-``` dotnet
+``` C#
 .AddOpenIdConnect("oidc", options =>
 {
     options.SignInScheme = "Cookies";
@@ -77,14 +77,14 @@ cookie检查视图迭代这些值并在屏幕上显示它们。
 
 例如：   
 
-``` dotnet
+``` C#
 var accessToken = await HttpContext.GetTokenAsync("access_token")
 var refreshToken = await HttpContext.GetTokenAsync("refresh_token");
 ```   
 
 要使用访问令牌访问API，您需要做的就是检索令牌，并在HttpClient上设置它：   
 
-``` dotnet
+``` C#
 public async Task<IActionResult> CallApi()
 {
     var accessToken = await HttpContext.GetTokenAsync("access_token");
@@ -98,7 +98,7 @@ public async Task<IActionResult> CallApi()
 }
 ```   
 
-创建一个名为`json.cshtml` 的视图，如下所示：   
+创建一个名为*json.cshtml* 的视图，如下所示：   
 
 ``` xml
 <pre>@ViewBag.Json</pre>
