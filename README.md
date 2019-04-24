@@ -29,11 +29,10 @@ IdentityServer4是ASP\.NET Core 2的OpenID Connect和OAuth 2.0框架。
 IdentityServer使用允许的[Apache 2](https://www.apache.org/licenses/LICENSE-2.0)许可证，允许在其上构建商业产品。它也是[.NET Foundation](https://dotnetfoundation.org/)的一部分，它提供治理和法律支持。  
 
 **<big>免费和商业支持</big>**
-如果您需要帮助构建或运行您的身份平台，请告知我们。我们可以通过多种方式为您提供帮助。   
+如果您需要帮助构建或运行您的身份平台，请告知我们。我们可以通过多种方式为您提供帮助。 
 
-<div align="center">
-<img src="https://github.com/thinksjay/IdentityServer4/blob/master/alipay.jpg?raw=true" width="200"/>
-<img src="https://github.com/thinksjay/IdentityServer4/blob/master/wechatpay.jpg?raw=true" width="200"/>
-</div>   
-   
+| 支付宝支付 | 微信支付 |
+| ------ | ------ |
+| <img src="https://github.com/thinksjay/IdentityServer4/blob/master/alipay.jpg?raw=true" width="200"/> | <img src="https://github.com/thinksjay/IdentityServer4/blob/master/wechatpay.jpg?raw=true" width="200"/> |
+
 **<big>感谢支持！！！</big>**
