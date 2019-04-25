@@ -31,7 +31,7 @@
 如果设置，将要求frame-src CSP标头在结束会话回调端点上发出，该端点向客户端呈现iframe以进行前端通道注销通知。默认为true。   
 
 ## 61.4 事件(Events)
-允许配置是否应将哪些事件提交到已注册的事件接收器。有关活动的更多信息，请参见[此处](https://github.com/thinksjay/IdentityServer4/blob/master/%E7%AC%AC32%E7%AB%A0%20%E4%BA%8B%E4%BB%B6.md)。   
+允许配置是否应将哪些事件提交到已注册的事件接收器。有关活动的更多信息，请参见[此处](https://github.com/thinksjay/IdentityServer4/blob/master/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%20%E4%B8%BB%E9%A2%98/%E7%AC%AC32%E7%AB%A0%20%E4%BA%8B%E4%BB%B6.md)。   
 
 ## 61.5 InputLengthRestrictions
 允许设置各种协议参数的长度限制，如客户端ID，范围，重定向URI等。
