@@ -1,4 +1,4 @@
-# 添加JavaScript客户端
+# 第14章 添加JavaScript客户端
 本快速入门将展示如何构建基于浏览器的JavaScript客户端应用程序（有时称为“ SPA ”）。   
 
 用户将登录IdentityServer，使用IdentityServer发出的访问令牌调用We​​b API，并注销IdentityServer。所有这些都将来自浏览器中运行的JavaScript。   
