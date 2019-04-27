@@ -35,7 +35,7 @@ public class TestController : ControllerBase
 }
 ```  
 
-如果要从浏览器调用该API，则还需要配置CORS（请参阅[此处]()）。
+如果要从浏览器调用该API，则还需要配置CORS（请参阅[此处](https://github.com/thinksjay/IdentityServer4/blob/master/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%20%E4%B8%BB%E9%A2%98/%E7%AC%AC41%E7%AB%A0%20CORS.md)）。
 
 ## 43.1 发现
 如果需要，您还可以将端点添加到发现文档中，例如：
