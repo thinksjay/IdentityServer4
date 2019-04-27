@@ -14,4 +14,4 @@ public interface IResourceOwnerPasswordValidator
 
 在上下文中，您将找到已解析的协议参数，如UserName和Password，以及原始请求，如果您想查看其他输入数据。
 
-然后，您的工作是实施密码验证并相应地设置`Result`上下文。请参阅[GrantValidationResult](https://identityserver4.readthedocs.io/en/latest/reference/grant_validation_result.html#refgrantvalidationresult)文档。
+然后，您的工作是实施密码验证并相应地设置`Result`上下文。请参阅[GrantValidationResult](https://github.com/thinksjay/IdentityServer4/blob/master/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%20%E5%8F%82%E8%80%83/%E7%AC%AC57%E7%AB%A0%20GrantValidationResult.md)文档。
