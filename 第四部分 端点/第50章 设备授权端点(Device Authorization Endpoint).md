@@ -1,4 +1,4 @@
-# 第49章 设备授权端点(Device Authorization Endpoint)
+# 第50章 设备授权端点(Device Authorization Endpoint)
 设备授权端点可用于请求设备和用户代码。此端点用于启动设备流授权过程。
 
 > **注意**
