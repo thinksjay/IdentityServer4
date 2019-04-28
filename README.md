@@ -31,6 +31,8 @@ IdentityServer使用允许的[Apache 2](https://www.apache.org/licenses/LICENSE-
 **<big>免费和商业支持</big>**
 如果您需要帮助构建或运行您的身份平台，请告知我们。我们可以通过多种方式为您提供帮助。 
 
+[博客](https://www.cnblogs.com/thinksjay/p/10772420.html)
+
 | 支付宝支付 | 微信支付 |
 | ------ | ------ |
 | <img src="https://github.com/thinksjay/IdentityServer4/blob/master/alipay.jpg?raw=true" width="200"/> | <img src="https://github.com/thinksjay/IdentityServer4/blob/master/wechatpay.jpg?raw=true" width="200"/> |
