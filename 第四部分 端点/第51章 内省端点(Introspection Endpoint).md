@@ -1,4 +1,4 @@
-# 第50章 内省端点(Introspection Endpoint)
+# 第51章 内省端点(Introspection Endpoint)
 内省端点是[RFC 7662](https://tools.ietf.org/html/rfc7662)的实现。
 
 它可用于验证引用令牌（如果消费者不支持适当的JWT或加密库，则可以使用JWT）。内省端点需要身份验证 - 因为内省端点的客户端是API，您可以在其上配置秘密`ApiResource`。
