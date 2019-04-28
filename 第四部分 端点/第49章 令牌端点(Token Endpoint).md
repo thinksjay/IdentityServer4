@@ -1,4 +1,4 @@
-# 第48章 令牌端点(Token Endpoint)
+# 第49章 令牌端点(Token Endpoint)
 令牌端点可用于以编程方式请求令牌。它支持`password`，`authorization_code`，`client_credentials`，`refresh_token`和`urn:ietf:params:oauth:grant-type:device_code`的类型。此外，可以扩展令牌端点以支持扩展授权类型。
 
 > **注意**
