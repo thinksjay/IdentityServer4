@@ -1,4 +1,4 @@
-# 第51章 撤销端点(Revocation Endpoint)
+# 第52章 撤销端点(Revocation Endpoint)
 此端点允许撤消访问令牌（仅限引用令牌）和刷新令牌。它实现了令牌撤销规范（[RFC 7009](https://tools.ietf.org/html/rfc7009)）。
 
 * **`token`**  
