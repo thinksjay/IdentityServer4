@@ -46,7 +46,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     // configure identity server with in-memory stores, keys, clients and scopes
     services.AddIdentityServer()
-        .AddInMemoryApiResources(Config.GetApiResources())
+        .AddInMemoryApiResources(Config.GetApis())
         .AddInMemoryClients(Config.GetClients())
         .AddTestUsers(Config.GetUsers());
 }
