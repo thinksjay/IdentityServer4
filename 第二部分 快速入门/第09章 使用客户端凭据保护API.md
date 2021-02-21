@@ -1,4 +1,4 @@
-# 第9章 使用客户端凭据保护API
+# 第09章 使用客户端凭据保护API
 
 快速入门介绍了使用IdentityServer保护API的最基本方案。 我们将定义一个API和一个想要访问它的客户端。 客户端将通过提供`ClientCredentials`在IdentityServer请求访问令牌，`ClientCredentials`充当客户端和IdentityServer都知道的秘密，并且它将使用该令牌来访问API。   
 
